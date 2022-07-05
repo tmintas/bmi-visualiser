@@ -1,0 +1,21 @@
+@import 'colors';
+
+ul.pets-list {
+  list-style: none;
+  margin: 40px 0;
+  display: flex;
+  justify-content: space-around;
+
+  > .pet-item {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: $light-blue;
+    color: rgb(245, 244, 244);
+    border-radius: 10px;
+
+    &:hover {
+      background-color: lighten($light-blue, 10);
+    }
+  }
+}
+

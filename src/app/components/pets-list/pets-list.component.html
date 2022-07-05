@@ -1,0 +1,7 @@
+<h2>
+  Please select your pet:
+</h2>
+
+<ul class="pets-list">
+  <li class="pet-item" *ngFor="let pet of pets" (click)="onPetSelect(pet)">{{pet.name}}</li>
+</ul>

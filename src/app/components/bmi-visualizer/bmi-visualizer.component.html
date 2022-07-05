@@ -1,0 +1,26 @@
+<h2>Mr. {{ pet.name }}'s BMI is</h2>
+
+<!-- round the score to have only 2 digits after decimal point -->
+<!-- not quite sure if rounding is really needed. E.g 29.999 will be shown as 30 which is probably not intended -->
+<!-- if other digits after the second decimal should be discarded, then a custom pipe is needed -->
+<p class="score-value">{{ pet.bmiScore | number: '2.0-2' }} </p>
+
+<div class="score-arrow" [ngStyle]="{'margin-left': arrowLeftMarginCssValue}"></div>
+<div class="score-bar">
+  <div
+    class="bar-segment"
+    *ngFor="let segment of bmiSegments"
+    [ngClass]="{ 'active': pet.bmiScore <= segment.highestBMIScoreIncluded && pet.bmiScore > segment.lowestBMIScoreExcluded }"
+    [ngStyle]="{ 'width' : getBmiSegmentWidthPercents(segment) + '%' }"
+  ></div>
+</div>
+
+<div class="score-bar-labels">
+  <div
+    class="label-segment"
+    *ngFor="let segment of bmiSegments"
+    [ngStyle]="{ 'width' : getBmiSegmentWidthPercents(segment) + '%' }"
+  >
+    {{ segment.name }}
+  </div>
+</div>
